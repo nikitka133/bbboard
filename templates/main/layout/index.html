@@ -1,0 +1,31 @@
+{% extends "main/layout/basic.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+    <h2 style=" border: 1px solid magenta">Последние объявления</h2>
+
+    <ul class="list-unstyled">
+            {% for bb in bbs %}
+                <li class="media my-5 p-3 border">
+                    {% url 'main:detail' rubric_pk=rubric.pk pk=bb.pk as url %}
+                    <a href="{{ url }}{{ all }}">
+                        {% if bb.image %}
+                            <img style="display: flex;" class="mr-3" src="{% thumbnail bb.image 'default' %}" alt="">
+                        {% else %}
+                            <img class="mr-3" src="{% static 'img/bg.jpg' %}" alt="" width="150" height="150">
+                        {% endif %}
+                    </a>
+                    <div class="media-body">
+                        <h3><a href="{% url "main:index_detail" pk=bb.pk %}">{{ bb.title }}</a></h3> {# или можно без pk=pk а сразу pk#}
+                        <div>{{ bb.content }}</div>
+                        <p class="text-right font-weight-bold">{{ bb.price }} руб.</p>
+                        <p class="text-right font-italic">{{ bb.created_at }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+{% endblock %}

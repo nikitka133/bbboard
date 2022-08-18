@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header h1 {
+    background: url("../img/bg.jpg") right / auto 100% no-repeat;
+}
+
+.root {
+font-size: larger;
+}
+
+#clear {
+    clear: both;
+}
+
+#login {
+    padding: 10px;
+    width: 50%;
+}
+
+img.main-image {
+    width: 300px;
+}
+img.additional-image {
+    width: 180px;
+}

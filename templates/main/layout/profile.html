@@ -1,0 +1,39 @@
+{% extends "main/layout/basic.html" %}
+{% load static %}
+{% load thumbnail %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+    <h2>Профиль пользователя {{ user.username }}</h2>
+    {% if user.first_name and user.last_name %}
+        <p>3дравствуйте, {{ user.first_name }} {{ user.last_name }}!</p>
+    {% else %}
+        <p>3дравствуите!</p>
+    {% endif %}
+    <h3>Ваши объявления</h3>
+
+    {% for bb in bbs %}
+        <li class="media my-5 p-3 border">
+{#        Добавляем путь в шаблон url и успользуем дальше в коде#}
+            {% url 'main:profile_bb_detail' pk=bb.pk as url %}
+            <a href="{{ url }}">
+                {% if bb.image %}
+                    <img style="display: flex;" class="mr-3" src="{% thumbnail bb.image 'default' %}" alt="">
+                {% else %}
+                    <img class="mr-3" src="{% static 'img/bg.jpg' %}" alt="" width="150" height="150">
+                {% endif %}
+            </a>
+            <div class="media-body">by
+                <h3><a href="{{ url }}{{ all }}">
+                    {{ bb.title }}</a></h3>
+                <div>{{ bb.content }}</div>
+                <p class="text-right font-weight-bold">{{ bb.price }} руб.</p>
+                <p class="text-right font-italic">{{ bb.created_at }}</p>
+            </div>
+        </li>
+    {% endfor %}
+
+{% endblock %}
