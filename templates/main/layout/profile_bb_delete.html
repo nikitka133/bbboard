@@ -1,0 +1,11 @@
+{% extends "main/layout/basic.html" %}
+{% load bootstrap4 %}
+{% block title %}Подтверждение удаления{% endblock %}
+{% block content %}
+    <h2>Удаление объявления:</h2>
+    <form method="post">
+        {% csrf_token %}
+            <p>{{ bb.title }}</p>
+        {% buttons submit="Удалить объявление" %}{% endbuttons %}
+    </form>
+{% endblock %}

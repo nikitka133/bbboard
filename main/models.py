@@ -24,6 +24,7 @@ class AdvUser(AbstractUser):
         pass
 
 
+
 class ChangeUserInfoForm(forms.ModelForm):
     email = forms.EmailField(required=True, label="Email!!!")
 

@@ -4,7 +4,8 @@ from django.views.static import serve
 
 from bbboard import settings
 from main import views
-from main.views import by_rubric, detail, index_bb_detail, profile_bb_detail, profile_bb_add
+from main.views import by_rubric, detail, index_bb_detail, profile_bb_detail, profile_bb_add, profile_bb_change, \
+    profile_bb_delete
 
 urlpatterns = [
     path('', views.index, name="index"),
@@ -23,6 +24,8 @@ urlpatterns = [
     path('detail/<int:pk>/', index_bb_detail, name="index_detail"),
     path('<int:rubric_pk>/<int:pk>/', detail, name="detail"),
     path('accounts/profile/add/', profile_bb_add, name='profile_bb_add'),
+    path('acoounts/profile/change/<int:pk>/', profile_bb_change, name='profile_bb_change'),
+    path('accounts/profile/delete/<int:pk>/', profile_bb_delete, name='profile_bb_delete'),
 
 ]
 if settings.DEBUG:
