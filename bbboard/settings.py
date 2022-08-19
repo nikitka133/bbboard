@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    "django_cleanup",
+    # "django_cleanup",
     "easy_thumbnails",
     'bootstrap4',
     'main.apps.MainConfig',
